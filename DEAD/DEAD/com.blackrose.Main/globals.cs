@@ -23,17 +23,20 @@ namespace DEAD
         private static float scaleY = 3f;
         private const float scaleZ = 1f;
         private const float yOffset = 48f;
+        private const int sFact = 3; 
         private static Boolean screenReg = true;
         private static Boolean showDebug = false;
 
         // Global Sprite variables
         private const string asstTiles = "tile_set";
         private const string asstTitle = "title"; 
-        private static Texture2D mTexture, title; 
-        private const int sSize = 16; 
+        private static Texture2D mTexture, title, background; 
+        private const int sSize = 16;
+
+        // Global State Variables
+        private static Boolean keyDown = false;
 
         // Global Display Variables
-        
         private static SpriteFont font;
         private static int colorVal;
         private static Color red = new Color(204, 0, 0);
@@ -114,6 +117,11 @@ namespace DEAD
             get { return yOffset; }
         }
 
+        // Scaling Factor
+        public static int sFactor {
+            get { return sFact; }
+        }
+
         // Screen Regular Get/Set
         public static Boolean ScreenRegular
         {
@@ -156,6 +164,17 @@ namespace DEAD
         // Sprite Size Get
         public static int spriteSize {
             get { return sSize; }
+        }
+
+        #endregion
+
+        #region State Variables
+
+        // Is Key Down Get/Set
+        public static Boolean isKeyDown
+        {
+            get { return keyDown; }
+            set { keyDown = value; }
         }
 
         #endregion

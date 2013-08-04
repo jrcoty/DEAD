@@ -14,6 +14,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Input;
 
 namespace DEAD.com.blackrose.Screens
 {
@@ -40,6 +41,10 @@ namespace DEAD.com.blackrose.Screens
                 drawGrid(spriteBatch);
 
             if (e_Time > 4000f) { game.setScreen(new Title()); }
+        }
+
+        public override void input(KeyboardState state) {
+            if (state.IsKeyDown(Keys.Enter) && !globals.isKeyDown) { game.setScreen(new Title()); }
         }
 
         private void drawChecks(SpriteBatch spriteBatch)

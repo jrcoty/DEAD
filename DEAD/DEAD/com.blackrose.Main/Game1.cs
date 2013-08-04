@@ -15,9 +15,10 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-using DEAD.com.blackrose.Screens; 
+using DEAD.com.blackrose.Screens;
+using DEAD.com.blackrose.Inputs; 
 
-namespace DEAD
+namespace DEAD.com.blackrose.Main
 {
     /// <summary>
     /// This is the main type for your game
@@ -83,6 +84,14 @@ namespace DEAD
             if (screen != null) { screen.init(this); }
         }
 
+        public void applyChanges() 
+        {
+            graphics.PreferredBackBufferWidth = globals.ScreenWidth;
+            graphics.PreferredBackBufferHeight = globals.ScreenHeight;
+
+            graphics.ApplyChanges(); 
+        }
+
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -93,6 +102,8 @@ namespace DEAD
             // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
+
+            keyControl.key_press(screen); 
 
             screen.update(gameTime);
             base.Update(gameTime);

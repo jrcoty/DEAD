@@ -11,6 +11,9 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Input;
+
+using DEAD.com.blackrose.Main; 
 
 namespace DEAD.com.blackrose.Screens
 {
@@ -35,6 +38,10 @@ namespace DEAD.com.blackrose.Screens
 
         public virtual void draw(SpriteBatch spriteBatch) {
 
+        }
+
+        public virtual void input(KeyboardState state) {
+        
         }
 
         protected void Draw_Header(SpriteBatch spriteBatch)

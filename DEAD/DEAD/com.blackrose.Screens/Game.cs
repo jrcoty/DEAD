@@ -20,7 +20,11 @@ namespace DEAD.com.blackrose.Screens
     {
         private Stage stage;
 
-        public Game() {
+        public Game() 
+        {
+            Console.WriteLine("Entered: Game Screen");
+            e_Time = 0.0f; 
+
             stage = new Stage(); 
         }
 

@@ -7,7 +7,7 @@
 
 using System;
 
-namespace DEAD
+namespace DEAD.com.blackrose.Main
 {
 #if WINDOWS || XBOX
     static class Program
