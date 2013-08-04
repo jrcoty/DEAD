@@ -12,9 +12,9 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-namespace DEAD.com.blackrose.Screen
+namespace DEAD.com.blackrose.Screens
 {
-    class Title : Screen
+    public class Title : Screen
     {
         private float yPos = 133f;
 
@@ -24,12 +24,22 @@ namespace DEAD.com.blackrose.Screen
             e_Time = 0.0f; 
         }
 
-        public override void update(GameTime gameTime) {
-            e_Time += (float)gameTime.ElapsedGameTime.Milliseconds; 
+        public override void update(GameTime gameTime) 
+        {
+            e_Time += (float)gameTime.ElapsedGameTime.Milliseconds;
+
+            if (e_Time > 2000f) { game.setScreen(new Game()); }
         }
 
         public override void draw(SpriteBatch spriteBatch)
         {
+            // Title
+            rect = new Rectangle(0, 0, 288, 240);
+            spriteBatch.Draw(globals.Title, new Vector2(0f, 0f), rect, color);
+
+            // Header
+            Draw_Header(spriteBatch); 
+
             // Gameplay Options
             rect = new Rectangle(69, 61, globals.spriteSize / 2, globals.spriteSize / 2);
 
@@ -45,7 +55,7 @@ namespace DEAD.com.blackrose.Screen
             Draw_Text(spriteBatch, "ALL RIGHTS RESERVED", 224, 210, Color.White, 9);
 
             // Credits
-            Draw_Text(spriteBatch, "CREDIT", 60, 228, globals.L_Blue, 10);
+            Draw_Text(spriteBatch, "CREDIT", 60, 228, globals.LBlue, 10);
             Draw_Text(spriteBatch, "1", 80, 228, globals.OWhite, 10);
         }
     }

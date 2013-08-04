@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-namespace DEAD.com.blackrose.Screen
+namespace DEAD.com.blackrose.Screens
 {
     public class Screen
     {
@@ -39,11 +39,11 @@ namespace DEAD.com.blackrose.Screen
 
         protected void Draw_Header(SpriteBatch spriteBatch)
         {
-            /*Draw_Text(spriteBatch, "PLAYER 1", 80, 0, globals.Gold, 10);
-            Draw_Text(spriteBatch, globals.P_SCore.ToString(), 80, 10, global_vars.L_Blue, 10);
+            Draw_Text(spriteBatch, "PLAYER 1", 80, 0, globals.Gold, 10);
+            Draw_Text(spriteBatch, "0", 80, 10, globals.LBlue, 10);
 
-            Draw_Text(spriteBatch, "TOP SCORE", 180, 0, global_vars.L_Red, 10);
-            Draw_Text(spriteBatch, global_vars.H_SCore.ToString(), 180, 10, global_vars.O_White, 10); */
+            Draw_Text(spriteBatch, "TOP SCORE", 180, 0, globals.LRed, 10);
+            Draw_Text(spriteBatch, "10000", 180, 10, globals.OWhite, 10); 
         }
 
         protected void Draw_Text(SpriteBatch spriteBatch, string str, int xPos, int yPos, Color color, int space)

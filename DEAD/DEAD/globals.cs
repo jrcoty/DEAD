@@ -27,8 +27,9 @@ namespace DEAD
         private static Boolean showDebug = false;
 
         // Global Sprite variables
-        private const string asst_name = "tile_set";
-        private static Texture2D mTexture; 
+        private const string asstTiles = "tile_set";
+        private const string asstTitle = "title"; 
+        private static Texture2D mTexture, title; 
         private const int sSize = 16; 
 
         // Global Display Variables
@@ -132,13 +133,24 @@ namespace DEAD
         #region Sprite Variables
 
         public static string Asset {
-            get { return asst_name; }
+            get { return asstTiles; }
+        }
+
+        public static string AssetTitle
+        {
+            get { return asstTitle; }
         }
 
         public static Texture2D tileset
         {
             set { mTexture = value; }
             get { return mTexture; }
+        }
+
+        public static Texture2D Title
+        {
+            set { title = value; }
+            get { return title; }
         }
 
         // Sprite Size Get
@@ -185,7 +197,7 @@ namespace DEAD
         }
 
         // Light Blue Color Get
-        public static Color L_Blue  {
+        public static Color LBlue  {
             get { return lBlue; }
         }
 
@@ -211,6 +223,5 @@ namespace DEAD
         }
 
         #endregion
-
     }
 }

@@ -15,7 +15,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-namespace DEAD.com.blackrose.Screen
+namespace DEAD.com.blackrose.Screens
 {
     public class Load : Screen
     {
@@ -38,7 +38,6 @@ namespace DEAD.com.blackrose.Screen
                 drawChecks(spriteBatch);
             else
                 drawGrid(spriteBatch);
-
 
             if (e_Time > 4000f) { game.setScreen(new Title()); }
         }

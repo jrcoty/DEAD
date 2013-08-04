@@ -15,7 +15,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 
-using DEAD.com.blackrose.Screen; 
+using DEAD.com.blackrose.Screens; 
 
 namespace DEAD
 {
@@ -58,16 +58,14 @@ namespace DEAD
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             globals.Font = Content.Load<SpriteFont>("GnG");
 
             globals.tileset = Content.Load<Texture2D>(globals.Asset);
+            globals.Title = Content.Load<Texture2D>(globals.AssetTitle);
 
             setScreen(new Load()); 
-
-            // TODO: use this.Content to load your game content here
         }
 
         /// <summary>
