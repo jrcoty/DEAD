@@ -119,6 +119,5 @@ namespace DEAD.com.blackrose.Screens
 
             game.applyChanges(); 
         }
-
     }
 }
