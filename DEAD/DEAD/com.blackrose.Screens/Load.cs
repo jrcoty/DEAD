@@ -22,9 +22,10 @@ namespace DEAD.com.blackrose.Screens
     {
         public Load()
         {
+#if DEBUG
             Console.WriteLine("Entered: Load Screen");
-
-            rect = new Rectangle(69, 35, globals.spriteSize, globals.spriteSize);
+#endif
+            rect = new Rectangle(17, 65, globals.spriteSize, globals.spriteSize);
             e_Time = 0.0f; 
         }
 
@@ -34,7 +35,6 @@ namespace DEAD.com.blackrose.Screens
 
         public override void draw(SpriteBatch spriteBatch)
         {
-
             if (e_Time < 3000f)
                 drawChecks(spriteBatch);
             else

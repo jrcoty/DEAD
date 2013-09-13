@@ -22,10 +22,12 @@ namespace DEAD.com.blackrose.Screens
 
         public Game() 
         {
-            Console.WriteLine("Entered: Game Screen");
+#if DEBUG   
+            Console.WriteLine("Entered: Game Screen"); 
+#endif
             e_Time = 0.0f; 
 
-            stage = new Stage(); 
+            stage = new Stage("layout_Main"); 
         }
 
         public override void update(GameTime gameTime) {

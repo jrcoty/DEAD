@@ -28,10 +28,11 @@ namespace DEAD
         private static Boolean showDebug = false;
 
         // Global Sprite variables
-        private const string asstTiles = "tile_set";
+        private const string asstTiles = "tileset";
         private const string asstTitle = "title"; 
         private static Texture2D mTexture, title, background; 
         private const int sSize = 16;
+        private const int sOffset = 1; 
 
         // Global State Variables
         private static Boolean keyDown = false;
@@ -47,35 +48,9 @@ namespace DEAD
         private static Color green = new Color(34, 68, 17);
 
         // Global layout
+        private static string layoutFolder = "Content/Stages/"; 
         private static int layoutCol = 18;
         private static int layoutRow = 12;
-
-        private static int[,] layout = new int[,] {{4, 9, 8, 9, 9, 8, 9, 8, 9, 9, 8, 9, 8, 9, 9, 8, 9, 5},
-                                                   {11,2,12,13, 2,12,13, 2, 3, 3, 2,12,13, 2,12,13, 2,11},
-                                                   {10,0,14,15, 1,14,15, 1, 0, 0, 1,14,15, 1,14,15, 0,10},
-                                                   {11,0, 0, 0, 0, 0, 0, 0,16,17, 0, 0, 0, 0, 0, 0, 0,11},
-                                                   {10,0, 2, 2, 2, 2, 2, 0,18,19, 0, 2, 2, 2, 2, 2, 0,10},
-                                                   {11,0, 1, 1, 1, 1, 1, 0,21,23, 0, 1, 1, 1, 1, 1, 0,11},
-                                                   {10,0, 2, 2, 2, 0, 2, 2, 0, 0, 2, 2, 0, 2, 2, 2, 0,10},
-                                                   {11,0, 1, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 1, 0,11},
-                                                   {10,0, 2, 0, 2, 2, 2, 0, 2, 2, 0, 2, 2, 2, 0, 2, 0,10},
-                                                   {11,0, 1, 0, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 0, 1, 0,11},
-                                                   {6, 9, 8, 9, 9, 8, 9, 8, 0, 0, 8, 9, 8, 9, 9, 8, 9, 7},
-                                                   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
-
-        // Alternate layout optimized for 288x224
-        private static int[,] altLayout = new int[,] {{4, 9, 8, 9, 9, 8, 9, 8, 9, 9, 8, 9, 8, 9, 9, 8, 9, 5},
-                                                   {11,12,13,2, 2, 3, 2, 2, 3, 3, 2, 2, 3, 2, 2,12,13,11},
-                                                   {10,14,15,1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1,14,15,10},
-                                                   {11,0, 0, 0, 2, 2, 2, 0,16,17, 0, 2, 2, 2, 0, 0, 0,11},
-                                                   {10,0, 0, 0, 1, 1, 1, 0,18,19, 0, 1, 1, 1, 0, 0, 0,10},
-                                                   {11,2, 0, 2, 2, 0, 2, 2,21,23, 2, 2, 0, 2, 2, 0, 2,11},
-                                                   {10,1, 0, 1, 1, 0, 1, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1,10},
-                                                   {11,2, 0, 2, 2, 2, 2, 0, 2, 2, 0, 2, 2, 2, 2, 0, 2,11},
-                                                   {10,1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1,10},
-                                                   {6, 9, 8, 9, 9, 8, 9, 8, 0, 0, 8, 9, 8, 9, 9, 8, 9, 7},
-                                                   {11,0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,11},
-                                                   {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
 
         #region Screen Variables
 
@@ -166,6 +141,11 @@ namespace DEAD
             get { return sSize; }
         }
 
+        // Sprite Offset Get
+        public static int spriteOffset {
+            get { return sOffset; }
+        }
+
         #endregion
 
         #region State Variables
@@ -229,8 +209,8 @@ namespace DEAD
 
         #region Layout
 
-        public static int[,] Layout {
-            get { return layout; }
+        public static string LayoutFolder {
+            get { return layoutFolder; }
         }
 
         public static int LayoutCol {

@@ -8,6 +8,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO; 
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
@@ -18,14 +19,42 @@ namespace DEAD.com.blackrose.Stages
 {
     public class Stage
     {
+        private string[,] tiles; 
+
         private Vector2 vector;
         private Rectangle rect;
         private Color color = Color.White;
 
         #region Contructor
 
-        public Stage() {
+        public Stage(string file) {
+            loadStage(file); 
+        }
 
+        private void loadStage(string file)
+        {
+            string line; 
+
+            string[] split;
+
+            tiles = new string[globals.LayoutRow, globals.LayoutCol];
+
+            using (StreamReader reader = new StreamReader(globals.LayoutFolder + file + ".txt"))
+            {
+                int row = 0; 
+
+                while ((line = reader.ReadLine()) != null)
+                {
+                    split = line.Split(',');
+
+                    for (int col = 0; col < split.Length; col++)
+                        tiles[row, col] = split[col]; 
+
+                    row++; 
+                }
+
+                reader.Close(); 
+            }
         }
 
         #endregion
@@ -45,7 +74,7 @@ namespace DEAD.com.blackrose.Stages
 
                     vector = new Vector2(tempX, tempY);
 
-                    rect = tileRect(globals.Layout[n, m]);
+                    rect = getTile(tiles[n, m]);
 
                     spriteBatch.Draw(globals.tileset, vector, rect, color);
                 }
@@ -55,139 +84,15 @@ namespace DEAD.com.blackrose.Stages
 
         #region Tiles
 
-        private Rectangle tileRect(int tileVal)
+        private Rectangle getTile(string tileVal)
         {
-
             int x_temp, y_temp;
-            Rectangle temp;
 
-            switch (tileVal)
-            {
-                case 1:
-                    x_temp = 1;
-                    y_temp = 18;
-                    break;
+            x_temp = int.Parse(tileVal[1].ToString()) * globals.spriteSize + globals.spriteOffset;
 
-                case 2:
-                    x_temp = 1;
-                    y_temp = 1;
-                    break;
+            y_temp = int.Parse(tileVal[0].ToString()) * globals.spriteSize + globals.spriteOffset; 
 
-                case 3:
-                    x_temp = 1;
-                    y_temp = 35;
-                    break;
-
-                case 4:
-                    x_temp = 35;
-                    y_temp = 1;
-                    break;
-
-                case 5:
-                    x_temp = 69;
-                    y_temp = 1;
-                    break;
-
-                case 6:
-                    x_temp = 35;
-                    y_temp = 18;
-                    break;
-
-                case 7:
-                    x_temp = 52;
-                    y_temp = 18;
-                    break;
-
-                case 8:
-                    x_temp = 52;
-                    y_temp = 1;
-                    break;
-
-                case 9:
-                    x_temp = 35;
-                    y_temp = 35;
-                    break;
-
-                case 10:
-                    x_temp = 69;
-                    y_temp = 18;
-                    break;
-
-                case 11:
-                    x_temp = 52;
-                    y_temp = 35;
-                    break;
-
-                case 12:
-                    x_temp = 35;
-                    y_temp = 52;
-                    break;
-
-                case 13:
-                    x_temp = 52;
-                    y_temp = 52;
-                    break;
-
-                case 14:
-                    x_temp = 35;
-                    y_temp = 69;
-                    break;
-
-                case 15:
-                    x_temp = 52;
-                    y_temp = 69;
-                    break;
-
-                case 16:
-                    x_temp = 1;
-                    y_temp = 52;
-                    break;
-
-                case 17:
-                    x_temp = 18;
-                    y_temp = 52;
-                    break;
-
-                case 18:
-                    x_temp = 1;
-                    y_temp = 69;
-                    break;
-
-                case 19:
-                    x_temp = 18;
-                    y_temp = 69;
-                    break;
-
-                case 20:
-                    x_temp = 1;
-                    y_temp = 86;
-                    break;
-
-                case 21:
-                    x_temp = 35;
-                    y_temp = 86;
-                    break;
-
-                case 22:
-                    x_temp = 18;
-                    y_temp = 86;
-                    break;
-
-                case 23:
-                    x_temp = 52;
-                    y_temp = 86;
-                    break;
-
-                default:
-                    x_temp = 18;
-                    y_temp = 35;
-                    break;
-
-            }
-
-            temp = new Rectangle(x_temp, y_temp, globals.spriteSize, globals.spriteSize);
-
-            return temp;
+            return new Rectangle(x_temp, y_temp, globals.spriteSize, globals.spriteSize);
         }
 
         #endregion

@@ -22,7 +22,9 @@ namespace DEAD.com.blackrose.Screens
 
         public Title()
         {
+#if DEBUG
             Console.WriteLine("Entered: Title Screen");
+#endif
             e_Time = 0.0f; 
         }
 
@@ -37,7 +39,7 @@ namespace DEAD.com.blackrose.Screens
             spriteBatch.Draw(globals.Title, new Vector2(0f, 0f), rect, color);
 
             // Header
-            Draw_Header(spriteBatch); 
+            // Draw_Header(spriteBatch); 
 
             // Gameplay Options
             rect = new Rectangle(69, 61, globals.spriteSize / 2, globals.spriteSize / 2);
@@ -55,7 +57,7 @@ namespace DEAD.com.blackrose.Screens
             }
 
             // Copyright Info
-            rect = new Rectangle(69, 52, globals.spriteSize / 2, globals.spriteSize / 2);
+            rect = new Rectangle(1, 69, globals.spriteSize / 2, globals.spriteSize / 2);
 
             spriteBatch.Draw(globals.tileset, new Vector2(15f, 203f), rect, color); 
             Draw_Text(spriteBatch, "1985 BLACK ROSE FUNERAL HOME", 270, 200, Color.White, 9);

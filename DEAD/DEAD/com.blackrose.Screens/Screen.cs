@@ -44,15 +44,6 @@ namespace DEAD.com.blackrose.Screens
         
         }
 
-        protected void Draw_Header(SpriteBatch spriteBatch)
-        {
-            Draw_Text(spriteBatch, "PLAYER 1", 80, 0, globals.Gold, 10);
-            Draw_Text(spriteBatch, "0", 80, 10, globals.LBlue, 10);
-
-            Draw_Text(spriteBatch, "TOP SCORE", 180, 0, globals.LRed, 10);
-            Draw_Text(spriteBatch, "10000", 180, 10, globals.OWhite, 10); 
-        }
-
         protected void Draw_Text(SpriteBatch spriteBatch, string str, int xPos, int yPos, Color color, int space)
         {
             for (idx = str.Length; idx > 0; idx--)
