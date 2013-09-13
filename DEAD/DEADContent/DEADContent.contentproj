@@ -42,13 +42,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="tile_set.bmp">
-      <Name>tile_set</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="GnG.spritefont">
       <Name>GnG</Name>
       <Importer>FontDescriptionImporter</Importer>
@@ -70,13 +63,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="tile_set_new.bmp">
-      <Name>tile_set_new</Name>
+    <Compile Include="tileset.bmp">
+      <Name>tileset</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <None Include="Stages\layout_Main.txt">
       <Name>layout_Main</Name>

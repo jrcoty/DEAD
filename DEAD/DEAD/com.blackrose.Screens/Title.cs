@@ -35,15 +35,15 @@ namespace DEAD.com.blackrose.Screens
         public override void draw(SpriteBatch spriteBatch)
         {
             // Title
-            rect = new Rectangle(0, 0, 288, 240);
-            spriteBatch.Draw(globals.Title, new Vector2(0f, 0f), rect, color);
+            //rect = new Rectangle(0, 0, 288, 240);
+            //spriteBatch.Draw(globals.Title, new Vector2(0f, 0f), rect, color);
 
             // Header
             // Draw_Header(spriteBatch); 
 
             // Gameplay Options
-            rect = new Rectangle(69, 61, globals.spriteSize / 2, globals.spriteSize / 2);
-            spriteBatch.Draw(globals.tileset, new Vector2(95f, yPos), rect, color);
+            //rect = new Rectangle(69, 61, globals.spriteSize / 2, globals.spriteSize / 2);
+            //spriteBatch.Draw(globals.tileset, new Vector2(95f, yPos), rect, color);
             
             if (!dOpt)
             {

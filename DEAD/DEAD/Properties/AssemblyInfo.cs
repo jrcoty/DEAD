@@ -30,4 +30,4 @@ using System.Runtime.InteropServices;
 //      Minor Version 
 //      Build Number
 //
-[assembly: AssemblyVersion("0.2.3")]
+[assembly: AssemblyVersion("0.2.4")]
