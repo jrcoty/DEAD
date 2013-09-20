@@ -17,6 +17,8 @@ namespace DEAD.com.blackrose.Text
 {
     class Text
     {
+        private int idx, tmpX; 
+
         #region Constructor
 
         public Text()
@@ -30,12 +32,12 @@ namespace DEAD.com.blackrose.Text
 
         public void Draw(SpriteBatch spriteBatch, string str, int xPos, int yPos, Color color, int space)
         {
-            /*for (idx = str.Length; idx > 0; idx--)
+            for (idx = str.Length; idx > 0; idx--)
             {
                 tmpX = xPos - ((str.Length - idx) * space);
 
                 spriteBatch.DrawString(globals.Font, str[idx - 1].ToString(), new Vector2(tmpX, yPos), color);
-            }*/
+            }
         }
 
         #endregion

@@ -16,56 +16,62 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 
+using DEAD.com.blackrose.Inputs;
+using DEAD.com.blackrose.Main;
+
 namespace DEAD.com.blackrose.Screens
 {
     public class Load : Screen
     {
+       // private float 
+
+
         public Load()
         {
 #if DEBUG
             Console.WriteLine("Entered: Load Screen");
 #endif
-            rect = new Rectangle(17, 65, globals.spriteSize, globals.spriteSize);
-            e_Time = 0.0f; 
+            rect = new Rectangle(17, 65, Globals.Tiles.Size, Globals.Tiles.Size);
+            eTime = 0.0f; 
         }
 
         public override void update(GameTime gameTime) {
-            e_Time += (float)gameTime.ElapsedGameTime.Milliseconds; 
+            eTime += (float)gameTime.ElapsedGameTime.Milliseconds; 
         }
 
         public override void draw(SpriteBatch spriteBatch)
         {
-            if (e_Time < 3000f)
+            if (eTime < 3000f)
                 drawChecks(spriteBatch);
             else
                 drawGrid(spriteBatch);
 
-            if (e_Time > 4000f) { game.setScreen(new Title()); }
+            if (eTime > 4000f) { game.setScreen(new Title()); }
         }
 
-        public override void input(KeyboardState state) {
-            if (state.IsKeyDown(Keys.Enter) && !globals.isKeyDown) { game.setScreen(new Title()); }
+        public override void input(KeyboardState state, bool isKeyDown) {
+            if (state.IsKeyDown(Keys.Enter) && !isKeyDown) { game.setScreen(new Title()); }
         }
 
         private void drawChecks(SpriteBatch spriteBatch)
         {
-            if (e_Time > 0f) { Draw_Text(spriteBatch, "RAM:", 50, 20, globals.Red, 10); }
+            if (eTime > 0f) { Globals.Text.Draw(spriteBatch, game.Font(), "RAM:", 50, 20, Globals.Font.Red, 10); }
 
-            if (e_Time > 500f) { Draw_Text(spriteBatch, "OK", 70, 20, globals.OWhite, 10); }
+            if (eTime > 500f) { Globals.Text.Draw(spriteBatch, game.Font(), "OK", 70, 20, Globals.Font.OffWhite, 10); }
 
-            if (e_Time > 1000f) { Draw_Text(spriteBatch, "ROM:", 50, 30, globals.Red, 10); }
+            if (eTime > 1000f) { Globals.Text.Draw(spriteBatch, game.Font(), "ROM:", 50, 30, Globals.Font.Red, 10); }
 
-            if (e_Time > 2000f) { Draw_Text(spriteBatch, "OK", 70, 30, globals.OWhite, 10); }
+            if (eTime > 2000f) { Globals.Text.Draw(spriteBatch, game.Font(), "OK", 70, 30, Globals.Font.OffWhite, 10); }
         }
 
         private void drawGrid(SpriteBatch spriteBatch)
         {
-            for (int n = 0; n < globals.LayoutRow + 3; n++)
-                for (int m = 0; m < globals.LayoutCol; m++)
+            for (int n = 0; n < Globals.Layout.Rows + 3; n++)
+                for (int m = 0; m < Globals.Layout.Columns; m++)
                 {
-                    vector = new Vector2(m * globals.spriteSize, n * globals.spriteSize);
+                    vector = new Vector2(m * Globals.Tiles.Size, n * Globals.Tiles.Size);
 
-                    spriteBatch.Draw(globals.tileset, vector, rect, color);
+                    spriteBatch.Draw(game.TileSet(), vector, rect, color);
                 }
         }
     }

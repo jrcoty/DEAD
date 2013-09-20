@@ -28,14 +28,18 @@ namespace DEAD.com.blackrose.Main
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        private Input keyboard; 
+
         private Screen screen;
+        private Texture2D tileset, title, background;
+        private SpriteFont font; 
 
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
 
-            graphics.PreferredBackBufferWidth = globals.ScreenWidth;
-            graphics.PreferredBackBufferHeight = globals.ScreenHeight;  
+            graphics.PreferredBackBufferWidth = Globals.Screen.Width;
+            graphics.PreferredBackBufferHeight = Globals.Screen.Height;  
 
             Content.RootDirectory = "Content";
         }
@@ -46,10 +50,7 @@ namespace DEAD.com.blackrose.Main
         /// related content.  Calling base.Initialize will enumerate through any components
         /// and initialize them as well.
         /// </summary>
-        protected override void Initialize()
-        {
-            // TODO: Add your initialization logic here
-
+        protected override void Initialize() {
             base.Initialize();
         }
 
@@ -61,10 +62,12 @@ namespace DEAD.com.blackrose.Main
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            globals.Font = Content.Load<SpriteFont>("GnG");
+            font = Content.Load<SpriteFont>(Globals.Font.Name);
 
-            globals.tileset = Content.Load<Texture2D>(globals.Asset);
-            globals.Title = Content.Load<Texture2D>(globals.AssetTitle);
+            tileset = Content.Load<Texture2D>(Globals.Tiles.Asset_Tiles);
+            title = Content.Load<Texture2D>(Globals.Tiles.Asset_Title);
+
+            keyboard = new Input(); 
 
             setScreen(new Load()); 
         }
@@ -73,9 +76,8 @@ namespace DEAD.com.blackrose.Main
         /// UnloadContent will be called once per game and is the place to unload
         /// all content.
         /// </summary>
-        protected override void UnloadContent()
-        {
-            // TODO: Unload any non ContentManager content here
+        protected override void UnloadContent() {
+            
         }
 
         public void setScreen(Screen screen)
@@ -84,13 +86,23 @@ namespace DEAD.com.blackrose.Main
             if (screen != null) { screen.init(this); }
         }
 
-        public void applyChanges() 
+        public Texture2D TileSet()
         {
-            graphics.PreferredBackBufferWidth = globals.ScreenWidth;
-            graphics.PreferredBackBufferHeight = globals.ScreenHeight;
-
-            graphics.ApplyChanges(); 
+            return tileset; 
         }
+
+        public SpriteFont Font()
+        {
+            return font; 
+        }
+
+        //public void applyChanges() 
+        //{
+        //    graphics.PreferredBackBufferWidth = Globals.Screen.Width;
+        //    graphics.PreferredBackBufferHeight = Globals.Screen.Height;
+
+        //    graphics.ApplyChanges(); 
+        //}
 
         /// <summary>
         /// Allows the game to run logic such as updating the world,
@@ -103,7 +115,9 @@ namespace DEAD.com.blackrose.Main
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            keyControl.key_press(screen); 
+            // keyControl.key_press(screen); 
+            //screen.input(Keyboard.GetState());
+            keyboard.keyPress(screen); 
 
             screen.update(gameTime);
             base.Update(gameTime);

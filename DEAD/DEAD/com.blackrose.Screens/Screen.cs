@@ -13,23 +13,24 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 
-using DEAD.com.blackrose.Main; 
+using DEAD.com.blackrose.Inputs;
+using DEAD.com.blackrose.Main;
 
 namespace DEAD.com.blackrose.Screens
 {
     public class Screen
     {
-        protected float e_Time; 
+        protected float eTime; 
         protected Vector2 vector;
         protected Rectangle rect;
         protected Color color = Color.White;
 
         protected Game1 game;
-
-        private int idx, tmpX; 
+        protected Input keyboard; 
 
         public void init(Game1 game) {
-            this.game = game; 
+            this.game = game;
+            keyboard = new Input(); 
         }
 
         public virtual void update(GameTime gameTime) {
@@ -40,18 +41,8 @@ namespace DEAD.com.blackrose.Screens
 
         }
 
-        public virtual void input(KeyboardState state) {
+        public virtual void input(KeyboardState state, bool isKeyDown) {
         
-        }
-
-        protected void Draw_Text(SpriteBatch spriteBatch, string str, int xPos, int yPos, Color color, int space)
-        {
-            for (idx = str.Length; idx > 0; idx--)
-            {
-                tmpX = xPos - ((str.Length - idx) * space);
-
-                spriteBatch.DrawString(globals.Font, str[idx - 1].ToString(), new Vector2(tmpX, yPos), color);
-            }
         }
     }
 }

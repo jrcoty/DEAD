@@ -17,15 +17,17 @@ namespace DEAD.com.blackrose.Inputs
 {
     static class keyControl
     {
+        public static bool isKeyDown; 
+
         public static void key_press(Screen screen)
         {
             screen.input(Keyboard.GetState());
 
             if (Keyboard.GetState().IsKeyDown(Keys.Enter) || Keyboard.GetState().IsKeyDown(Keys.Up) || Keyboard.GetState().IsKeyDown(Keys.Down) ||
                 Keyboard.GetState().IsKeyDown(Keys.W) || Keyboard.GetState().IsKeyDown(Keys.S))
-                globals.isKeyDown = true;
+                isKeyDown = true;
             else
-                globals.isKeyDown = false;
+                isKeyDown = false;
         }
     }
 }

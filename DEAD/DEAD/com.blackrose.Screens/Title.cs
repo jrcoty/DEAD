@@ -42,8 +42,8 @@ namespace DEAD.com.blackrose.Screens
             // Draw_Header(spriteBatch); 
 
             // Gameplay Options
-            //rect = new Rectangle(69, 61, globals.spriteSize / 2, globals.spriteSize / 2);
-            //spriteBatch.Draw(globals.tileset, new Vector2(95f, yPos), rect, color);
+            rect = new Rectangle(69, 61, globals.spriteSize / 2, globals.spriteSize / 2);
+            spriteBatch.Draw(globals.tileset, new Vector2(95f, yPos), rect, color);
             
             if (!dOpt)
             {
@@ -119,7 +119,7 @@ namespace DEAD.com.blackrose.Screens
                 globals.ScreenRegular = true; 
             }
 
-            game.applyChanges(); 
+            // game.applyChanges(); 
         }
     }
 }
