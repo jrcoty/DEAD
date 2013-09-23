@@ -22,6 +22,7 @@ namespace DEAD.com.blackrose.Screens
     public class Game : Screen
     {
         private Stage stage;
+        private const string STAGE_LAYOUT = "layout_Main"; 
 
         public Game() 
         {
@@ -31,7 +32,7 @@ namespace DEAD.com.blackrose.Screens
             eTime = 0.0f; 
 
             stage = new Stage();
-            stage.loadStage("layout_Main"); 
+            stage.loadStage(STAGE_LAYOUT); 
         }
 
         public override void update(GameTime gameTime) {

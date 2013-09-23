@@ -111,6 +111,7 @@ namespace DEAD.com.blackrose.Main
             keyboard.keyPress(screen); 
             
             screen.update(gameTime);
+
             base.Update(gameTime);
         }
 
