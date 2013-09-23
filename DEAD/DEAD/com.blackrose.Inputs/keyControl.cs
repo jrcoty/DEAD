@@ -21,7 +21,7 @@ namespace DEAD.com.blackrose.Inputs
 
         public static void key_press(Screen screen)
         {
-            screen.input(Keyboard.GetState());
+            // screen.input(Keyboard.GetState());
 
             if (Keyboard.GetState().IsKeyDown(Keys.Enter) || Keyboard.GetState().IsKeyDown(Keys.Up) || Keyboard.GetState().IsKeyDown(Keys.Down) ||
                 Keyboard.GetState().IsKeyDown(Keys.W) || Keyboard.GetState().IsKeyDown(Keys.S))

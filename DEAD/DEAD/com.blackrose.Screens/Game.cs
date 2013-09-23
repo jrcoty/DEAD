@@ -11,7 +11,10 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Input;
 
+using DEAD.com.blackrose.Inputs;
+using DEAD.com.blackrose.Main;
 using DEAD.com.blackrose.Stages; 
 
 namespace DEAD.com.blackrose.Screens
@@ -25,17 +28,23 @@ namespace DEAD.com.blackrose.Screens
 #if DEBUG   
             Console.WriteLine("Entered: Game Screen"); 
 #endif
-            e_Time = 0.0f; 
+            eTime = 0.0f; 
 
-            stage = new Stage("layout_Main"); 
+            stage = new Stage();
+            stage.loadStage("layout_Main"); 
         }
 
         public override void update(GameTime gameTime) {
-            e_Time += (float)gameTime.ElapsedGameTime.Milliseconds;
+            eTime += (float)gameTime.ElapsedGameTime.Milliseconds;
         }
 
         public override void draw(SpriteBatch spriteBatch) {
-            stage.Draw(spriteBatch); 
+            stage.Draw(spriteBatch, game.TileSet()); 
+        }
+
+        public override void input(KeyboardState state, bool isKeyDown)
+        {
+
         }
     }
 }

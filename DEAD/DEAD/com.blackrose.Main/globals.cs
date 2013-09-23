@@ -43,13 +43,13 @@ namespace DEAD.com.blackrose.Main
 
         public static class Font
         {
-            public const string Name = "GnG";
-            public const Color Red = new Color(204, 0, 0);
-            public const Color LightRed = new Color(255, 0, 102);
-            public const Color Gold = new Color(238, 238, 221);
-            public const Color OffWhite = new Color(238, 238, 221);
-            public const Color LightBlue = new Color(136, 255, 255);
-            public const Color Green = new Color(34, 68, 17);
+            public static string Name = "GnG";
+            public static Color Red = new Color(204, 0, 0);
+            public static Color LightRed = new Color(255, 0, 102);
+            public static Color Gold = new Color(238, 238, 221);
+            public static Color OffWhite = new Color(238, 238, 221);
+            public static Color LightBlue = new Color(136, 255, 255);
+            public static Color Green = new Color(34, 68, 17);
         }
 
         public static class Text

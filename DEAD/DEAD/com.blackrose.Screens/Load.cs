@@ -23,15 +23,24 @@ namespace DEAD.com.blackrose.Screens
 {
     public class Load : Screen
     {
-       // private float 
+        private const float MEM_CHECK = 3000f;
+        private const float SCREEN_CHECK = 4000f;
 
+        private string[,] DISPLAY = {{"RAM:", "0", "50", "20", "0"}, {"OK", "500", "70", "20", "1"},
+                                     {"ROM:", "1000", "50", "30", "0"}, {"OK", "2000", "70", "30", "1"}};
+        private Color[] COLORS = {Globals.Font.Red, Globals.Font.OffWhite}; 
+        private const int SPACE = 10;
+
+        private const int GRID_X = 17;
+        private const int GRID_Y = 65; 
 
         public Load()
         {
 #if DEBUG
             Console.WriteLine("Entered: Load Screen");
 #endif
-            rect = new Rectangle(17, 65, Globals.Tiles.Size, Globals.Tiles.Size);
+            // Location of the grid tile
+            rect = new Rectangle(GRID_X, GRID_Y, Globals.Tiles.Size, Globals.Tiles.Size);
             eTime = 0.0f; 
         }
 
@@ -41,29 +50,28 @@ namespace DEAD.com.blackrose.Screens
 
         public override void draw(SpriteBatch spriteBatch)
         {
-            if (eTime < 3000f)
+            if (eTime < MEM_CHECK)
                 drawChecks(spriteBatch);
             else
                 drawGrid(spriteBatch);
 
-            if (eTime > 4000f) { game.setScreen(new Title()); }
+            if (eTime > SCREEN_CHECK) { game.setScreen(new Title()); }
         }
 
         public override void input(KeyboardState state, bool isKeyDown) {
             if (state.IsKeyDown(Keys.Enter) && !isKeyDown) { game.setScreen(new Title()); }
         }
 
+        // Memory "check"
         private void drawChecks(SpriteBatch spriteBatch)
-        {
-            if (eTime > 0f) { Globals.Text.Draw(spriteBatch, game.Font(), "RAM:", 50, 20, Globals.Font.Red, 10); }
-
-            if (eTime > 500f) { Globals.Text.Draw(spriteBatch, game.Font(), "OK", 70, 20, Globals.Font.OffWhite, 10); }
-
-            if (eTime > 1000f) { Globals.Text.Draw(spriteBatch, game.Font(), "ROM:", 50, 30, Globals.Font.Red, 10); }
-
-            if (eTime > 2000f) { Globals.Text.Draw(spriteBatch, game.Font(), "OK", 70, 30, Globals.Font.OffWhite, 10); }
+        {  
+            for (int n = 0; n < DISPLAY.GetLength(0); n++)
+                if (eTime > float.Parse(DISPLAY[n, 1]))
+                    Globals.Text.Draw(spriteBatch, game.Font(), DISPLAY[n, 0], int.Parse(DISPLAY[n, 2]), int.Parse(DISPLAY[n, 3]), 
+                                        COLORS[int.Parse(DISPLAY[n, 4])], SPACE);
         }
 
+        // Graphics "check"
         private void drawGrid(SpriteBatch spriteBatch)
         {
             for (int n = 0; n < Globals.Layout.Rows + 3; n++)

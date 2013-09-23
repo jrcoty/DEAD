@@ -39,8 +39,7 @@ namespace DEAD.com.blackrose.Inputs
 
         }
 
-        public bool isKeyPressed()
-        {
+        public bool isKeyPressed() {
             return isKeyDown; 
         }
     }

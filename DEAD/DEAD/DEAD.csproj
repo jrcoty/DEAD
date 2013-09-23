@@ -116,7 +116,6 @@
     <Compile Include="com.blackrose.Screens\Screen.cs" />
     <Compile Include="com.blackrose.Screens\Title.cs" />
     <Compile Include="com.blackrose.Stages\Stage.cs" />
-    <Compile Include="com.blackrose.Text\Text.cs" />
     <Compile Include="com.blackrose.UI\Footer.cs" />
     <Compile Include="com.blackrose.UI\Header.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
