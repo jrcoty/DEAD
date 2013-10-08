@@ -26,11 +26,9 @@ namespace DEAD.com.blackrose.Screens
         protected Color color = Color.White;
 
         protected Game1 game;
-        protected Input keyboard; 
 
         public void init(Game1 game) {
             this.game = game;
-            keyboard = new Input(); 
         }
 
         public virtual void update(GameTime gameTime) {

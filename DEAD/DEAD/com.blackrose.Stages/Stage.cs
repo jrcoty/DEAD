@@ -15,6 +15,8 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
+using DEAD.com.blackrose.Main;
+
 namespace DEAD.com.blackrose.Stages
 {
     public class Stage
@@ -27,19 +29,19 @@ namespace DEAD.com.blackrose.Stages
 
         #region Contructor
 
-        public Stage(string file) {
-            loadStage(file); 
+        public Stage() {
+
         }
 
-        private void loadStage(string file)
+        public void loadStage(string file)
         {
             string line; 
 
             string[] split;
 
-            tiles = new string[globals.LayoutRow, globals.LayoutCol];
+            tiles = new string[Globals.Layout.Rows, Globals.Layout.Columns];
 
-            using (StreamReader reader = new StreamReader(globals.LayoutFolder + file + ".txt"))
+            using (StreamReader reader = new StreamReader(Globals.Layout.FolderLocation + file + ".txt"))
             {
                 int row = 0; 
 
@@ -61,22 +63,22 @@ namespace DEAD.com.blackrose.Stages
 
         #region Draw
 
-        public void Draw(SpriteBatch spriteBatch)
+        public void Draw(SpriteBatch spriteBatch, Texture2D tileset)
         {
             float tempX, tempY;
 
-            for (int n = 0; n < globals.LayoutRow; n++)
-                for (int m = 0; m < globals.LayoutCol; m++)
+            for (int n = 0; n < Globals.Layout.Rows; n++)
+                for (int m = 0; m < Globals.Layout.Columns; m++)
                 {
-                    tempX = (float)m * globals.spriteSize;
+                    tempX = (float)m * Globals.Tiles.Size;
 
-                    tempY = (float)(n * globals.spriteSize) + globals.YOffset;
+                    tempY = (float)(n * Globals.Tiles.Size + Globals.Screen.YOffset);
 
                     vector = new Vector2(tempX, tempY);
 
                     rect = getTile(tiles[n, m]);
 
-                    spriteBatch.Draw(globals.tileset, vector, rect, color);
+                    spriteBatch.Draw(tileset, vector, rect, color);
                 }
         }
 
@@ -88,11 +90,11 @@ namespace DEAD.com.blackrose.Stages
         {
             int x_temp, y_temp;
 
-            x_temp = int.Parse(tileVal[1].ToString()) * globals.spriteSize + globals.spriteOffset;
+            x_temp = int.Parse(tileVal[1].ToString()) * Globals.Tiles.Size + Globals.Tiles.Offset;
 
-            y_temp = int.Parse(tileVal[0].ToString()) * globals.spriteSize + globals.spriteOffset; 
+            y_temp = int.Parse(tileVal[0].ToString()) * Globals.Tiles.Size + Globals.Tiles.Offset;
 
-            return new Rectangle(x_temp, y_temp, globals.spriteSize, globals.spriteSize);
+            return new Rectangle(x_temp, y_temp, Globals.Tiles.Size, Globals.Tiles.Size);
         }
 
         #endregion

@@ -96,14 +96,6 @@ namespace DEAD.com.blackrose.Main
             return font; 
         }
 
-        //public void applyChanges() 
-        //{
-        //    graphics.PreferredBackBufferWidth = Globals.Screen.Width;
-        //    graphics.PreferredBackBufferHeight = Globals.Screen.Height;
-
-        //    graphics.ApplyChanges(); 
-        //}
-
         /// <summary>
         /// Allows the game to run logic such as updating the world,
         /// checking for collisions, gathering input, and playing audio.
@@ -116,10 +108,10 @@ namespace DEAD.com.blackrose.Main
                 this.Exit();
 
             // keyControl.key_press(screen); 
-            //screen.input(Keyboard.GetState());
             keyboard.keyPress(screen); 
-
+            
             screen.update(gameTime);
+
             base.Update(gameTime);
         }
 
@@ -131,8 +123,13 @@ namespace DEAD.com.blackrose.Main
         {
             GraphicsDevice.Clear(Color.Black);
 
+<<<<<<< HEAD
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, null, 
                                 Matrix.CreateScale(Globals.Screen.XScale, Globals.Screen.YScale, Globals.Screen.ZScale));
+=======
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, 
+                                null, Matrix.CreateScale(Globals.Screen.XScale, Globals.Screen.YScale, Globals.Screen.ZScale));
+>>>>>>> ffe5f28b9391c93bf3f0586236624dd27a30242b
 
             screen.draw(spriteBatch);
 
