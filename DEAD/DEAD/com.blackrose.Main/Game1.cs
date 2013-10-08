@@ -131,7 +131,8 @@ namespace DEAD.com.blackrose.Main
         {
             GraphicsDevice.Clear(Color.Black);
 
-            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, null, Matrix.CreateScale(globals.xScale, globals.yScale, globals.zScale));
+            spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, DepthStencilState.Default, RasterizerState.CullCounterClockwise, null, 
+                                Matrix.CreateScale(Globals.Screen.XScale, Globals.Screen.YScale, Globals.Screen.ZScale));
 
             screen.draw(spriteBatch);
 

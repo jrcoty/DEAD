@@ -13,6 +13,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Input;
 
+using DEAD.com.blackrose.Main; 
+
 namespace DEAD.com.blackrose.Text
 {
     class Text
@@ -36,7 +38,7 @@ namespace DEAD.com.blackrose.Text
             {
                 tmpX = xPos - ((str.Length - idx) * space);
 
-                spriteBatch.DrawString(globals.Font, str[idx - 1].ToString(), new Vector2(tmpX, yPos), color);
+                spriteBatch.DrawString(Globals.Font.Name, str[idx - 1].ToString(), new Vector2(tmpX, yPos), color);
             }
         }
 
